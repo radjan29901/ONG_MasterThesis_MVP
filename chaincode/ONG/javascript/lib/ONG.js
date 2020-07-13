@@ -103,7 +103,7 @@ class FabCar extends Contract {
         }
     }
 //WIll be the change status of donation
-   /* async changeCarOwner(ctx, carNumber, newOwner) {
+   /* async changeStatusDonation(ctx, idDonation, newStatus) {
         console.info('============= START : changeCarOwner ===========');
 
         const carAsBytes = await ctx.stub.getState(carNumber); // get the car from chaincode state
