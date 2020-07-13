@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-   
+    <!--Made with love by Mutiullah Samim -->
+
     <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
     <!--Fontawesome CDN-->
 
     <!--Custom styles-->
@@ -15,40 +17,77 @@
     <link rel="stylesheet" href="/css/styleMVP.css">
     <!-- jQuery library -->
     <script src="/js/jquery.min.js"></script>
-    
+
     <!-- Latest compiled JavaScript -->
-    <script src="/js/bootstrap.min.js"></script> 
-    <script src="/js/scriptMVP.js"></script> 
-   </head>
+    <script src="/js/bootstrap.min.js"></script>
+    
+
+</head>
 
 <body>
 
-   <nav class="navbar navbar-default navbar-fixed-top">
-       <div class="input-group mb-3">
-           <div class="input-group-prepend">
-             <button class="btn btn-outline-secondary"  type="button"><a href="index">Dashboard</a></button>
-           </div>
-           <div class="input-group-prepend">
-               <button class="btn btn-outline-secondary" href="history" type="button"><a href="history">History</a></button>
-           </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button"><a href="index">Dashboard</a></button>
+            </div>
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" href="history" type="button"><a
+                        href="history">History</a></button>
+            </div>
 
-           <div class="input-group-prepend">
-               <button class="btn btn-outline-secondary" type="button"><a href="donate">Donate</a></button>
-           </div>
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button"><a href="donate">Donate</a></button>
+            </div>
 
-           <div class="input-group-prepend">
-               <button class="btn btn-outline-secondary" type="button"><a href="help">Help</a></button>
-           </div>
-         </div>
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button"><a href="help">Help</a></button>
+            </div>
+        </div>
 
-     </nav>
-     <div id="container">
+    </nav>
+    <div id="container">
         <p class="h2">
-           Donate
+            Donate
+    </div>
+    </div>
+    <div id="container" class="dimScreen">
+        <div class="card" style="width: 22rem;">
+            <div class="card-body">
+                <form onsubmit="return false">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Id. of the receiver</label>
+                        <input type="text" class="form-control" id="id_receiver" aria-describedby="emailHelp"  placeholder="Enter id">
+                        <small id="emailHelp" class="form-text text-muted">Enter id of the receiver</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Id. of the sender</label>
+                        <input type="text" class="form-control" id="id_sender" aria-describedby="emailHelp"   placeholder="Enter id">
+                        <small id="emailHelp" class="form-text text-muted">Enter id of the sender</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Amount</label>
+                        <input type="text" class="form-control" id="amount" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">Enter the amount of your donation </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Date</label>
+                        <input type="text" class="form-control" id="date" aria-describedby="emailHelp"   placeholder="Enter date">
+                        <small id="emailHelp" class="form-text text-muted">Enter the date</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Type</label>
+                        <input type="text" class="form-control" id="type" aria-describedby="emailHelp"  placeholder="Enter type">
+                        <small id="emailHelp" class="form-text text-muted">Enter the type of the transaction</small>
+                    </div>
+                    <button onclick="send_tx();" class="btn btn-primary" id="send_donation"  name="data" >Send</button>
+                </form>
+            </div>
         </div>
     </div>
-     <div id="container" class="dimScreen">
 
-     </div>
- </body>
- </html>
+</body>
+<script src="/js/scriptMVP.js"></script>
+</html>

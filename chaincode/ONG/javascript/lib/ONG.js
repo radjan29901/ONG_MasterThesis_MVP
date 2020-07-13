@@ -55,8 +55,10 @@ class FabCar extends Contract {
         console.log(donationAsBytes.toString());
         return donationAsBytes.toString();
     }
+
+ 
 //Transform
-    async createDonation(ctx, id_sending, id_receiving, amount, date, type) {
+    async createDonation(ctx, key,id_sending, id_receiving, amount, date, type) {
         console.info('============= START : Create Car ===========');
 
         const donation = {
@@ -67,7 +69,7 @@ class FabCar extends Contract {
             type,
         };
 
-        await ctx.stub.putState(id_sending, Buffer.from(JSON.stringify(donation)));
+        await ctx.stub.putState(key, Buffer.from(JSON.stringify(donation)));
         console.info('============= END : Create Car ===========');
     }
 

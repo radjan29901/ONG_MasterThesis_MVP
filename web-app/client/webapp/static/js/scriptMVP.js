@@ -1,5 +1,35 @@
 
+
 var serverURL = 'http://localhost:8081'
+
+
+function send_tx(){
+
+  var id_receiver=document.getElementById("id_receiver").value
+  var id_sender=document.getElementById("id_sender").value
+  var amount=document.getElementById("amount").value
+  var date= document.getElementById("date").value
+  var type=document.getElementById("type").value
+ 
+  $.ajax({
+    type: 'POST',
+    url: serverURL + '/CreateDonation',
+    headers: { "X-HTTP-Method-Override": "PUT" },
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify(({ "id_sending": id_sender,"id_receiving":id_receiver,"amount": amount,"date":date,"type":"1"})),
+    success: function (results) {
+      alert(results) 
+   
+    },
+    error: function (data) {
+      alert("error")
+    },
+   
+  });
+};
+
+
 function queryAllDonations() {
   $.ajax({
     type: 'GET',
@@ -41,23 +71,6 @@ function queryAllDonations() {
   })
 };
 
-function CreateDonation(id_sending,id_receiving,amount,date) {
-  $.ajax({
-    type: 'PUT',
-    url: serverURL + '/WebInformation',
-    headers: { "X-HTTP-Method-Override": "PUT" },
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    data: JSON.stringify(({ "id_sending": id_sending,"id_receiving":id_receiving,"amount": amount,"date":date,"type":"1"})),
-    success: function (results) {
-      alert(results)
-   
-    },
-    error: function (data) {
-      notifyServerError()
-    },
-   
-  });
 
 
-}
+

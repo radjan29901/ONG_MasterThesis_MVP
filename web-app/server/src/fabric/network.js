@@ -20,7 +20,8 @@ let fileContents = fs.readFileSync(filePath, 'utf8');
 let connectionFile = yaml.safeLoad(fileContents);
 
 // create car transaction
-exports.createDonation = async function(key, make, model, color, owner) {
+exports.createDonation = async function(key, id_sender, id_receiver, amount, date,type)
+{
     try {
 
         var response = {};
@@ -53,8 +54,8 @@ exports.createDonation = async function(key, make, model, color, owner) {
 
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-
-        await contract.submitTransaction('createDonation', key, make, model, color, owner);
+ 
+        await contract.submitTransaction('createDonation', key,id_sender, id_receiver, amount, date, type);
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

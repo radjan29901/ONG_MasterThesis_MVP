@@ -21,16 +21,16 @@ app.get('/queryAllDonations', (req, res) => {
       });
 })
 
-
-app.post('/createDonation', (req, res) => { 
+app.post('/CreateDonation', (req, res) => { 
   console.log(req.body);
   network.queryAllDonations()
-    .then((response) => {
+    .then((response) => { 
       console.log(response);
       var donationRecord = JSON.parse(response);
       var numDonation = donationRecord.length;
-      var newKey = 'DONATIOn' + numDonation;           
-      network.createCar(newKey, req.body.id_sending, req.body.id_receiving, req.body.amount, req.body.date)
+      var newKey = 'DONATION' + numDonation;           
+      network.createDonation(newKey, req.body.id_sending, req.body.id_receiving, req.body.amount, req.body.date,req.body.type)
+      console.log("has been send!!!!!!!!!!!!!!")
       .then((response) => {
         res.send(response)
       })
