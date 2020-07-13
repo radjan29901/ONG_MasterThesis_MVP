@@ -38,7 +38,7 @@ class FabCar extends Contract {
         console.info('============= END : Initialize Ledger ===========');
     }
 
-    async queryDonationBySender(ctx, donation) {
+    async queryDonationBySender(ctx, id_sender) {
         const donationAsBytes = await ctx.stub.getState(donation); // get the car from chaincode state
         if (!donationAsBytes || donationAsBytes.length === 0) {
             throw new Error(`${donation} does not exist`);

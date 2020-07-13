@@ -1,0 +1,34 @@
+.navbar {
+    margin-top: 10px;
+    /*margin-left: 100px;*/
+   
+   }
+   .dimScreen
+   {
+       position:fixed;
+       padding:0;
+       margin:0;
+   
+       /*top:0;*/
+       left:100px;
+   
+     /*  width: 50%;
+       height: 50%;*/
+       border: dotted green;
+   }
+   .dimScreen div{
+    margin-left: 10px;
+    margin-top: 10px;
+   }
+   body{
+    margin-left: 100px;
+   }
+   .indexDonatorButton{
+    margin-left: 200px;
+   }
+   .tr{
+       font:10px;
+   }
+   .td{
+       font: 10px;
+   }

@@ -21,21 +21,21 @@ app.get('/queryAllDonations', (req, res) => {
       });
 })
 
-app.get('/createDonation', (req, res) => { 
+
+app.post('/createDonation', (req, res) => { 
   console.log(req.body);
   network.queryAllDonations()
     .then((response) => {
       console.log(response);
-      var carsRecord = JSON.parse(response);
-      var numCars = carsRecord.length;
-      var newKey = 'DONATION' + 10;           
-      network.createDonation("DONATION10", "2", "3", "4", "5")
+      var donationRecord = JSON.parse(response);
+      var numDonation = donationRecord.length;
+      var newKey = 'DONATIOn' + numDonation;           
+      network.createCar(newKey, req.body.id_sending, req.body.id_receiving, req.body.amount, req.body.date)
       .then((response) => {
         res.send(response)
       })
     })  
 })
-
 app.post('/changeCarOwner', (req, res) => {
   network.changeCarOwner(req.body.key, req.body.newOwner)
       .then((response) => {

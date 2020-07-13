@@ -12,20 +12,17 @@
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="/css/styleMVP.css">
     <!-- jQuery library -->
     <script src="/js/jquery.min.js"></script>
     
     <!-- Latest compiled JavaScript -->
     <script src="/js/bootstrap.min.js"></script> 
+    <script src="/js/scriptMVP.js"></script> 
    </head>
-<style>
-   .navbar {
- margin-top: 10px;
- margin-left: 100px;
-
-}
-</style>
+<script>
+    queryAllDonations();
+</script>
 <body>
 
    <nav class="navbar navbar-default navbar-fixed-top">
@@ -34,7 +31,7 @@
              <button class="btn btn-outline-secondary"  type="button"><a href="index">Dashboard</a></button>
            </div>
            <div class="input-group-prepend">
-               <button class="btn btn-outline-secondary" href="history" type="button"><a href="history">History</a></button>
+               <button class="btn btn-outline-secondary" type="button"><a href="history">History</a></button>
            </div>
 
            <div class="input-group-prepend">
@@ -47,5 +44,28 @@
          </div>
 
      </nav>
+     <div id="container">
+        <p class="h2">
+           History of transactions
+        </div>
+    </div>
+     <div id="container" class="dimScreen">
+        <table class="table" id="transactionsType">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+          
+    
+          </table>
+     </div>
  </body>
  </html>
