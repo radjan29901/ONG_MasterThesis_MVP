@@ -23,7 +23,7 @@ class FabCar extends Contract {
             {
                 id_sending :'1',
                 id_receiving:'1',
-                amout:'10',
+                amount:'10',
                 date:'24/01/202020',
                 type: '1',
             },

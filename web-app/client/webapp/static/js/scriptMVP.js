@@ -44,7 +44,7 @@ function queryAllDonations() {
           if (key == "Record") {
 
             for (var value in results[i][key]) {
-              if (value == "date" || value == "amout" || value == "type") {
+              if (value == "date" || value == "amout" || value == "amount" ||value == "type") {
                 td_value = document.createElement('TD')
                 td_value.innerText = results[i][key][value]
                 tr.appendChild(td_value)
