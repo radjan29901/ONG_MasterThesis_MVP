@@ -89,13 +89,22 @@ class FabCar extends Contract {
 
                 const Key = res.value.key;
                 let Record;
+                var test=false;
                 try {
                     Record = JSON.parse(res.value.value.toString('utf8'));
+                    if (Record['type']=='1'){
+                            test=true;
+                    }
+                    
+                    //add filter
                 } catch (err) {
                     console.log(err);
                     Record = res.value.value.toString('utf8');
+                    
                 }
+                if(test){
                 allResults.push({ Key, Record });
+                }
             }
             if (res.done) {
                 console.log('end of data');

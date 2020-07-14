@@ -146,7 +146,7 @@ exports.createDonation = async function(key, id_sender, amount, date,type)
         // Disconnect from the gateway.
         await gateway.disconnect();
 
-        response.msg = 'createCar Transaction has been submitted';
+        response.msg = 'createCar Transaction has been submitted'; 
         return response;        
 
     } catch (error) {
