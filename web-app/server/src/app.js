@@ -20,6 +20,13 @@ app.get('/get_auth_info', (req, res) => {
       });
 })
 
+app.get('/checkAuth', (req, res) => {
+  network.checkAuth()
+    .then((response) => {      
+        res.send(response)
+      });
+})
+
 app.get('/queryAllDonations', (req, res) => {
   network.queryAllDonations()
     .then((response) => {      

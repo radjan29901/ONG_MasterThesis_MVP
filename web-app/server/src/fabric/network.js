@@ -20,6 +20,23 @@ const filePath = path.join(process.cwd(), '/connection.yaml');
 let fileContents = fs.readFileSync(filePath, 'utf8');
 let connectionFile = yaml.safeLoad(fileContents);
 
+exports.checkAuth = async function()
+{
+    //password for admin is adminpw
+    try {
+
+     if(userName=='None'){
+         return false;
+     }
+     return true;
+
+    } catch (error) {
+        console.error(`Failed to submit transaction: ${error}`);
+        response.error = error.message;
+        return response; 
+    }
+}
+
 // create car transaction
 exports.auth = async function(new_username,password)
 {
@@ -36,8 +53,7 @@ exports.auth = async function(new_username,password)
         "gatewayDiscovery": { "enabled": false, "asLocalhost": true }
         
     }
-        config=new_config;
-        userName=new_username;
+
         var response = {};
 
         // Create a new file system based wallet for managing identities.
@@ -46,14 +62,23 @@ exports.auth = async function(new_username,password)
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const userExists = await wallet.exists(userName);
+        const userExists = await wallet.exists(new_username);
         if (!userExists) {
+            userName="None"
+            config['userName']='None'
+            config['appAdmin']='None'
+            config['appAdminSecret']='None'
+            config['orgMSPID']='None'
+            config['caName']='None'
             console.log('An identity for the user ' + userName + ' does not exist in the wallet');
             console.log('Run the registerUser.js application before retrying');
             response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
             return response;
         }
-
+        else{
+        config=new_config;
+        userName=new_username;
+        }
     } catch (error) {
         console.error(`Failed to submit transaction: ${error}`);
         response.error = error.message;
