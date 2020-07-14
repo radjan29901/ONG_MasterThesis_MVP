@@ -24,11 +24,9 @@ function auth(){
 }
 function send_tx(){
 
-  var id_receiver=document.getElementById("id_receiver").value
-  var id_sender=document.getElementById("id_sender").value
+
   var amount=document.getElementById("amount").value
-  var date= document.getElementById("date").value
-  var type=document.getElementById("type").value
+
  
   $.ajax({
     type: 'POST',
@@ -36,7 +34,7 @@ function send_tx(){
     headers: { "X-HTTP-Method-Override": "PUT" },
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
-    data: JSON.stringify(({ "id_sending": id_sender,"id_receiving":id_receiver,"amount": amount,"date":date,"type":"1"})),
+    data: JSON.stringify(({ "amount": amount})),
     success: function (results) {
       alert(results) 
    
@@ -63,7 +61,7 @@ function queryAllDonations() {
           if (key == "Record") {
 
             for (var value in results[i][key]) {
-              if (value == "date" || value == "amout" || value == "amount" ||value == "type") {
+              if (value == "date" || value == "amout" || value == "amount" ) {
                 td_value = document.createElement('TD')
                 td_value.innerText = results[i][key][value]
                 tr.appendChild(td_value)
@@ -117,3 +115,26 @@ function get_auth_info() {
   })
 };
 
+
+function create_user() {
+  var appAdmin=document.getElementById("appAdmin").value
+  var appAdminSecret=document.getElementById("appAdminSecret").value
+  var userName=document.getElementById("userName").value
+  var orgMSPID=document.getElementById("orgMSPID").value
+  var caName=document.getElementById("caName").value
+  $.ajax({
+    type: 'POST',
+    url: serverURL + '/create_user',
+    headers: { "X-HTTP-Method-Override": "PUT" },
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify(({ "appAdmin": appAdmin,"appAdminSecret":appAdminSecret,"userName":userName,"orgMSPID":orgMSPID,"caName":caName})),
+    success: function (results) {
+
+     alert(results)
+    },
+    error: function (data) {
+      alert("error, service respond :"+data)
+    }
+  })
+};

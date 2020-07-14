@@ -57,16 +57,7 @@
         <div class="card" style="width: 22rem;">
             <div class="card-body">
                 <form onsubmit="return false">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Id. of the receiver</label>
-                        <input type="text" class="form-control" id="id_receiver" aria-describedby="emailHelp"  placeholder="Enter id">
-                        <small id="emailHelp" class="form-text text-muted">Enter id of the receiver</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Id. of the sender</label>
-                        <input type="text" class="form-control" id="id_sender" aria-describedby="emailHelp"   placeholder="Enter id">
-                        <small id="emailHelp" class="form-text text-muted">Enter id of the sender</small>
-                    </div>
+                   
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Amount</label>
@@ -74,16 +65,7 @@
                         <small id="emailHelp" class="form-text text-muted">Enter the amount of your donation </small>
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Date</label>
-                        <input type="text" class="form-control" id="date" aria-describedby="emailHelp"   placeholder="Enter date">
-                        <small id="emailHelp" class="form-text text-muted">Enter the date</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Type</label>
-                        <input type="text" class="form-control" id="type" aria-describedby="emailHelp"  placeholder="Enter type">
-                        <small id="emailHelp" class="form-text text-muted">Enter the type of the transaction</small>
-                    </div>
+            
                     <button onclick="send_tx();" class="btn btn-primary" id="send_donation"  name="data" >Send</button>
                 </form>
             </div>

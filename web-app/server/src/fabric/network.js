@@ -102,7 +102,7 @@ exports.get_auth_info = async function()
     }
 }
 // create car transaction
-exports.createDonation = async function(key, id_sender, id_receiver, amount, date,type)
+exports.createDonation = async function(key, id_sender, amount, date,type)
 {
     try {
 
@@ -137,7 +137,7 @@ exports.createDonation = async function(key, id_sender, id_receiver, amount, dat
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
  
-        await contract.submitTransaction('createDonation', key,userName         , id_receiver, amount, date, type);
+        await contract.submitTransaction('createDonation', key,userName , 'ONG', amount, date, type);
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.

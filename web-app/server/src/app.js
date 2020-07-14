@@ -4,6 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 var network = require('./fabric/network.js');
+const { stdout } = require('process');
 
 const app = express()
 app.use(morgan('combined'))
@@ -47,6 +48,32 @@ app.post('/auth', (req, res) => {
     })  
 })
 
+app.post('/create_user', (req, res) => { 
+  var appAdmin=req.body.appAdmin;
+  var appAdminSecret=req.body.appAdminSecret;
+  var username=req.body.userName;
+  var orgMSPID=req.body.orgMSPID;
+  var caName=req.body.caName;
+  var exec = require('child_process').exec, child;
+var arguments=appAdmin+" "+appAdminSecret+" "+username+" "+orgMSPID+" "+caName
+exec('sudo node enrollAdmin.js '+arguments,
+    function (error, stdout, stderr) {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+             console.log('exec error: ' + error);
+        }
+    });
+ return stdout;
+})
+function getDate(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  today = dd + '/' + mm + '/' + yyyy;
+  return today;
+}
 app.post('/CreateDonation', (req, res) => { 
   console.log(req.body);
   network.queryAllDonations()
@@ -56,8 +83,8 @@ app.post('/CreateDonation', (req, res) => {
       var numDonation = donationRecord.length;
       var newKey = 'DONATION' + numDonation;           
 
-
-      network.createDonation(newKey, req.body.id_sending, req.body.id_receiving, req.body.amount, req.body.date,req.body.type)
+      var destinataire='ONG'
+      network.createDonation(newKey, destinataire, req.body.amount, getDate(),'1')
       console.log("has been send!!!!!!!!!!!!!!")
       .then((response) => {
         res.send(response)

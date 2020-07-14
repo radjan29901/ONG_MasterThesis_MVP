@@ -3,8 +3,7 @@
  */
 
 'use strict';
-var myArgs = process.argv.slice(2);
-console.log('myArgs: ', myArgs);
+
 const FabricCAServices = require('fabric-ca-client');
 const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
 const fs = require('fs');
@@ -12,15 +11,15 @@ const path = require('path');
 const yaml = require('js-yaml')
 
 // capture network variables from config.json
-/*const configPath = path.join(process.cwd(), 'config.json');
+const configPath = path.join(process.cwd(), 'config.json');
 const configJSON = fs.readFileSync(configPath, 'utf8');
-const config = JSON.parse(configJSON);*/
-var connection_file = 'connection.yaml';
-var appAdmin =myArgs[0];
-var appAdminSecret =myArgs[1];
-var userName = myArgs[2];
-var orgMSPID =myArgs[3];
-var caName = myArgs[4];
+const config = JSON.parse(configJSON);
+var connection_file = config.connection_file;
+var appAdmin = config.appAdmin;
+var appAdminSecret = config.appAdminSecret;
+var userName = config.userName;
+var orgMSPID = config.orgMSPID;
+var caName = config.caName;
 
 const filePath = path.join(process.cwd(), '/connection.yaml');
 let fileContents = fs.readFileSync(filePath, 'utf8');

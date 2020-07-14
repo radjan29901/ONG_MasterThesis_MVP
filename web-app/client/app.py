@@ -92,3 +92,9 @@ def render_donator_donate():
     if checkAuth()=='false':
         return app.send_static_file("index.html")
     return app.send_static_file("donator/donate.html")
+
+@app.route('/admin/create_user')
+def create_user():
+    if checkAuth()=='false':
+        return app.send_static_file("index.html")
+    return app.send_static_file("admin/createUser.html")
