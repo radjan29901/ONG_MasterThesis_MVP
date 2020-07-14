@@ -2,7 +2,26 @@
 
 var serverURL = 'http://localhost:8081'
 
-
+function auth(){
+  var username=document.getElementById("login").value
+  var password=document.getElementById("password").value
+  $.ajax({
+    type: 'POST',
+    url: serverURL + '/auth',
+    headers: { "X-HTTP-Method-Override": "PUT" },
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify(({ "username": username,"password":password})),
+    success: function (results) {
+      alert(results) 
+   
+    },
+    error: function (data) {
+      alert("error")
+    },
+   
+  });
+}
 function send_tx(){
 
   var id_receiver=document.getElementById("id_receiver").value
@@ -73,4 +92,28 @@ function queryAllDonations() {
 
 
 
+function get_auth_info() {
+  $.ajax({
+    type: 'GET',
+    url: serverURL + '/get_auth_info',
+    contentType: 'application/json',
+    success: function (results) {
+      var appAdmin=results['appAdmin']
+      var appAdminSecret=results['appAdminSecret']
+      var orgMSPID=results['orgMSPID']
+      var caName=results['caName']
+      var username= results['userName']
+      
+      document.getElementById('appAdmin').innerHTML='<b>appAdmin</b> : '+appAdmin
+      document.getElementById('appAdminSecret').innerHTML='<b>appAdminSecret</b> : '+appAdminSecret
+      document.getElementById('OrgMSPID').innerHTML='<b>orgMSPID</b> : '+orgMSPID
+      document.getElementById('caName').innerHTML='<b>caName</b> : '+caName
+      document.getElementById('username').innerHTML='<b>userName</b> : '+username
+
+    },
+    error: function (data) {
+      alert("error, service respond :"+data)
+    }
+  })
+};
 

@@ -12,6 +12,13 @@ app.use(cors())
 
 
 
+app.get('/get_auth_info', (req, res) => {
+  network.get_auth_info()
+    .then((response) => {      
+       
+        res.send(response)
+      });
+})
 
 app.get('/queryAllDonations', (req, res) => {
   network.queryAllDonations()
@@ -19,6 +26,18 @@ app.get('/queryAllDonations', (req, res) => {
         var carsRecord = JSON.parse(response);        
         res.send(carsRecord)
       });
+})
+
+app.post('/auth', (req, res) => { 
+  var username=req.body.username;
+  var password=req.body.password;
+  console.log(username);
+  console.log(password);
+
+  network.auth(username,password)
+    .then((response) => { 
+       
+    })  
 })
 
 app.post('/CreateDonation', (req, res) => { 
@@ -29,6 +48,8 @@ app.post('/CreateDonation', (req, res) => {
       var donationRecord = JSON.parse(response);
       var numDonation = donationRecord.length;
       var newKey = 'DONATION' + numDonation;           
+
+
       network.createDonation(newKey, req.body.id_sending, req.body.id_receiving, req.body.amount, req.body.date,req.body.type)
       console.log("has been send!!!!!!!!!!!!!!")
       .then((response) => {

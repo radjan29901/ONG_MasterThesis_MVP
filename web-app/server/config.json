@@ -6,4 +6,5 @@
     "caName": "ca.org1.example.com",
     "userName": "admin",
     "gatewayDiscovery": { "enabled": false, "asLocalhost": true }
+    
 }

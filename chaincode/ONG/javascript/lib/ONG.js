@@ -5,6 +5,7 @@
 peer chaincode install -n ONG -v 1.0 -l node -p /opt/gopath/src/github.com/chaincode/ONG/javascript
 peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n ONG -l node -v 1.0 -c '{"Args":["initLedger"]}' -P 'AND ('\''Org1MSP.peer'\'')'
 peer chaincode query -C mychannel -n ONG -c '{"Args":["queryCar","CAR1"]}'
+fabric-ca-client identity add user1 --json '{"secret": "user1pw", "type": "client", "affiliation": "org1", "max_enrollments": 1, "attrs": [{"name": "hf.Revoker", "value": "true"}]}'
 
  https://stackoverflow.com/questions/50144119/fabric-docker-image-version-of-1-1-0-alpha-does-not-match-this-newer-version-of
  sudo bash -m down
@@ -23,7 +24,7 @@ class FabCar extends Contract {
             {
                 id_sending :'1',
                 id_receiving:'1',
-                amount:'10',
+                amountr:'10',
                 date:'24/01/202020',
                 type: '1',
             },
