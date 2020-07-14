@@ -45,9 +45,9 @@ exports.auth = async function(new_username,password)
 
        var new_config={
         "connection_file": "connection.yaml",
-        "appAdmin": new_username,
-        "appAdminSecret": password,
-        "orgMSPID": "Org1MSP",
+        "appAdmin": "admin",
+        "appAdminSecret": "adminpw",
+        "orgMSPID": password,
         "caName": "ca.org1.example.com",
         "userName": new_username ,
         "gatewayDiscovery": { "enabled": false, "asLocalhost": true }
@@ -63,7 +63,9 @@ exports.auth = async function(new_username,password)
 
         // Check to see if we've already enrolled the user.
         const userExists = await wallet.exists(new_username);
+
         if (!userExists) {
+            //MessageBox user unknown
             userName="None"
             config['userName']='None'
             config['appAdmin']='None'
@@ -76,6 +78,7 @@ exports.auth = async function(new_username,password)
             return response;
         }
         else{
+        //Message box user known
         config=new_config;
         userName=new_username;
         }
