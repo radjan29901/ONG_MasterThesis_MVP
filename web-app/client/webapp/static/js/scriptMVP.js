@@ -47,7 +47,7 @@ function send_tx(){
 };
 
 
-function queryAllDonations() {
+function queryAllDonations( donator=true) {
   $.ajax({
     type: 'GET',
     url: serverURL + '/queryAllDonations',
@@ -61,6 +61,7 @@ function queryAllDonations() {
           if (key == "Record") {
 
             for (var value in results[i][key]) {
+              if(donator){
               if (value == "date" || value == "amout" || value == "amount" ) {
                 td_value = document.createElement('TD')
                 td_value.innerText = results[i][key][value]
@@ -69,7 +70,16 @@ function queryAllDonations() {
                 console.log(results[i][key][value]);
               }
             }
-
+            else{
+              if (value == "date" || value == "amout" || value == "amount" || value == "type" ) {
+                td_value = document.createElement('TD')
+                td_value.innerText = results[i][key][value]
+                tr.appendChild(td_value)
+                console.log(value)
+                console.log(results[i][key][value]);
+              }
+            }
+          }
           }
           else {
             var td_key = document.createElement('TD')

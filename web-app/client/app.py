@@ -74,7 +74,7 @@ def render_scss(path):
 @app.route('/auth')
 def render_index():
     return app.send_static_file("index.html")
-
+############DONATOR#####################
 @app.route('/donator/index')
 def render_donator_index():
     if checkAuth()=='false':
@@ -92,9 +92,33 @@ def render_donator_donate():
     if checkAuth()=='false':
         return app.send_static_file("index.html")
     return app.send_static_file("donator/donate.html")
-
-@app.route('/admin/create_user')
+############ONG#####################
+@app.route('/ONG/create_user')
 def create_user():
     if checkAuth()=='false':
         return app.send_static_file("index.html")
-    return app.send_static_file("admin/createUser.html")
+    return app.send_static_file("ONG/createUser.html")
+
+@app.route('/ONG/index')
+def ONG_index():
+    if checkAuth()=='false':
+        return app.send_static_file("index.html")
+    return app.send_static_file("ONG/index.html")
+
+@app.route('/ONG/confirmation')
+def confirmation():
+    if checkAuth()=='false':
+        return app.send_static_file("index.html")
+    return app.send_static_file("ONG/confirmation.html")
+
+@app.route('/ONG/donator')
+def donator():
+    if checkAuth()=='false':
+        return app.send_static_file("index.html")
+    return app.send_static_file("ONG/donator.html")
+
+@app.route('/ONG/transfer')
+def transfer():
+    if checkAuth()=='false':
+        return app.send_static_file("index.html")
+    return app.send_static_file("ONG/transfer.html")

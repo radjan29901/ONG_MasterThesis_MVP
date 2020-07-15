@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styleMVP.css">
+    <!-- jQuery library -->
+    <script src="/js/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>  
+    <script src="/js/scriptMVP.js"></script> 
+   </head>
+
+<body>
+
+   <nav class="navbar navbar-default navbar-fixed-top">
+       <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <button class="btn btn-outline-secondary"  type="button"><a href="index">Dashboard</a></button>
+           </div>
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button"><a href="confirmation">Confirmation</a></button>
+           </div>
+
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button"><a href="donator">Donator</a></button>
+           </div>
+
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button"><a href="transfer">Transfer</a></button>
+           </div>
+         </div>
+
+     </nav>
+     <div id="container">
+        <p class="h2">
+           Account information
+        </div>
+    </div>
+     <div id="container" class="dimScreen">
+        <table class="table" id="transactionsType">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+          
+    
+          </table>
+     </div>
+ </body>
+ <script>
+get_auth_info()
+queryAllDonations(false);
+
+</script>
