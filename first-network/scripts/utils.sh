@@ -11,6 +11,8 @@ PEER0_ORG1_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrga
 PEER0_ORG2_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
 PEER0_ORG3_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt
 
+
+
 # verify the result of the end-to-end test
 verifyResult() {
   if [ $1 -ne 0 ]; then
@@ -121,7 +123,7 @@ installChaincode() {
   setGlobals $PEER $ORG
   VERSION=${3:-1.0}
   set -x
-  peer chaincode install -n ONG -v ${VERSION} -l ${LANGUAGE} -p /opt/gopath/src/github.com/chaincode/ONG/javascript >&log.txt
+  peer chaincode install -n ONG -v 2.0 -l ${LANGUAGE} -p /opt/gopath/src/github.com/chaincode/ONG/javascript >&log.txt
   res=$?
   set +x
   cat log.txt
@@ -144,7 +146,7 @@ instantiateChaincode() {
   # the "-o" option
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
     set -x
-    peer chaincode instantiate -o orderer.example.com:7050 -C $CHANNEL_NAME -n ONG -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')" >&log.txt
+    peer chaincode instantiate -o orderer.example.com:7050 -C $CHANNEL_NAME -n ONG -l ${LANGUAGE} -v 2.0 -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer')" >&log.txt
     res=$?
     set +x
   else
@@ -165,7 +167,7 @@ upgradeChaincode() {
   setGlobals $PEER $ORG
 
   set -x
-  peer chaincode upgrade -o orderer.example.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n fabcar -v 2.0 -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')"
+  peer chaincode upgrade -o orderer.example.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ONG -v 2.0 -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')"
   res=$?
   set +x
   cat log.txt
@@ -178,7 +180,7 @@ chaincodeQuery() {
   PEER=$1
   ORG=$2
   setGlobals $PEER $ORG
-  EXPECTED_RESULT=$3
+  EXPECTED_RESULT=$2
   echo "===================== Querying on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME'... ===================== "
   local rc=1
   local starttime=$(date +%s)
@@ -256,7 +258,7 @@ signConfigtxAsPeerOrg() {
 createConfigUpdate() {
   CHANNEL=$1
   ORIGINAL=$2
-  MODIFIED=$3
+  MODIFIED=$2
   OUTPUT=$4
 
   set -x

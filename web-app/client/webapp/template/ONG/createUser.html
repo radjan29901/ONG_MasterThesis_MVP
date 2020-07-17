@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styleMVP.css">
+    <!-- jQuery library -->
+    <script src="/js/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>  
+    <script src="/js/scriptMVP.js"></script> 
+   </head>
+
+<body>
+
+   <nav class="navbar navbar-default navbar-fixed-top">
+       <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <button class="btn btn-outline-secondary"  type="button"><a href="index">Dashboard</a></button>
+           </div>
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" href="history" type="button"><a href="history">History</a></button>
+           </div>
+
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button"><a href="donate">Donate</a></button>
+           </div>
+
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button"><a href="help">Help</a></button>
+           </div>
+         </div>
+
+     </nav>
+
+     <div id="container" class="dimScreen">
+        <div class="card" style="width: 22rem;">
+            <div class="card-body">
+                <form onsubmit="return false">
+                   
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">appAdmin</label>
+                        <input type="text" class="form-control" id="appAdmin" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">XXXX </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">appAdminSecret</label>
+                        <input type="text" class="form-control" id="appAdminSecret" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">XXXX </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">userName</label>
+                        <input type="text" class="form-control" id="userName" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">XXXX </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">orgMSPID</label>
+                        <input type="text" class="form-control" id="orgMSPID" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">XXXX </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">caName</label>
+                        <input type="text" class="form-control" id="caName" aria-describedby="emailHelp"   placeholder="Enter amount">
+                        <small id="emailHelp" class="form-text text-muted">XXXX </small>
+                    </div>
+                    <button onclick="create_user();" class="btn btn-primary" id="send_donation"  name="data" >Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </body>
+ <script>
+get_auth_info()
+</script>
+ </html>

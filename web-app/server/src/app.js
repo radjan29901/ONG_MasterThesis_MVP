@@ -36,6 +36,14 @@ app.get('/queryAllDonations', (req, res) => {
       });
 })
 
+app.get('/queryAllDonationsAdmin', (req, res) => {
+  network.queryAllDonationsAdmin()
+    .then((response) => {      
+        var carsRecord = JSON.parse(response);        
+        res.send(carsRecord)
+      });
+})
+
 app.post('/auth', (req, res) => { 
   var username=req.body.username;
   var password=req.body.password;
@@ -91,8 +99,8 @@ app.post('/CreateDonation', (req, res) => {
       })
     })  
 })
-app.post('/changeCarOwner', (req, res) => {
-  network.changeCarOwner(req.body.key, req.body.newOwner)
+app.post('/change_type', (req, res) => {
+  network.change_type(req.body.id, req.body.type )
       .then((response) => {
         res.send(response)
       })
