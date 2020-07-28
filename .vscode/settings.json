@@ -11,5 +11,6 @@
         "**/*.spec.ts",
         "**/node_modules/**"
     ],
-    "ngrxUml.input.baseDir": "/home/alexis/Documents/MVP/ONG_MasterThesis_MVP"
+    "ngrxUml.input.baseDir": "/home/alexis/Documents/MVP/ONG_MasterThesis_MVP",
+    "ngrxUml.output.generateDiagramImages": true
 }
