@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"javascript.implicitProjectConfig.checkJs": true,
+		"typescript.workspaceSymbols.scope": "currentProject",
+		"typescript.format.insertSpaceAfterConstructor": true,
+		"xmlTools.enforcePrettySelfClosingTagOnFormat": true,
+		"javascript.implicitProjectConfig.experimentalDecorators": true,
+		"python.dataScience.gatherToScript": true
+	}
+}

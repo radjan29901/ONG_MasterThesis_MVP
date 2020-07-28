@@ -1,0 +1,15 @@
+{
+    "typescript.suggest.completeFunctionCalls": true,
+    "python.dataScience.gatherToScript": true,
+    "search.useGlobalIgnoreFiles": true,
+    "scm.alwaysShowActions": true,
+    "xmlTools.splitAttributesOnFormat": true,
+    "xmlTools.enforcePrettySelfClosingTagOnFormat": true,
+    "xmlTools.removeCommentsOnMinify": true,
+    "ngrxUml.input.ignoreFiles": [
+
+        "**/*.spec.ts",
+        "**/node_modules/**"
+    ],
+    "ngrxUml.input.baseDir": "/home/alexis/Documents/MVP/ONG_MasterThesis_MVP"
+}
