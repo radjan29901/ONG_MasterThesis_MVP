@@ -11,5 +11,8 @@
 		"xmlTools.enforcePrettySelfClosingTagOnFormat": true,
 		"javascript.implicitProjectConfig.experimentalDecorators": true,
 		"python.dataScience.gatherToScript": true
+	},
+	"extensions": {
+		"recommendations": []
 	}
 }
